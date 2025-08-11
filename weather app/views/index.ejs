@@ -10,10 +10,35 @@
 
 <body>
     <h1>Node Js Weather App</h1>
-    <form action="" method="post">
+    <form action="/weather" method="get">
         <input type="text" placeholder="Enter City" name="city">
-        <button class="btn">Submit</button>
+        <button class="btn">Get Weather</button>
     </form>
+    <%if(error){%>
+        <p class="error">
+            <%= error%>
+        </p>
+        <%}else{%>
+            <div class="weather-container">
+                <p>
+                    📍 <%= weather.sys.country%>,
+                        <%= weather.name%>
+                </p>
+                <p>
+                    🌡️
+                    <%= weather.main.temp%>&deg;F,
+                        <%= ((weather.main.temp - 32 )/1.8).toFixed(2)%>&deg;C
+                </p>
+                <p>
+                    👁️
+                    <%= weather.visibility%>
+                </p>
+                <p>
+                    🌬️
+                    <%= weather.wind.speed%> m/h
+                </p>
+            </div>
+            <%}%>
 </body>
 
 </html>
